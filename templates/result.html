@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resultados - XenaReco</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>Resultados para {{ domain }}</h1>
+    <div class="container">
+        <h2>WHOIS:</h2>
+        <pre>{{ results.whois }}</pre>
+        
+        <h2>IP:</h2>
+        <p>{{ results.ip }}</p>
+
+        <h2>Headers HTTP:</h2>
+        <pre>{{ results.headers }}</pre>
+
+        <h2>Scraping (Meta):</h2>
+        <p><strong>Título:</strong> {{ results.meta.title }}</p>
+        <p><strong>Descripción:</strong> {{ results.meta.meta_desc }}</p>
+
+        <a href="/">Volver</a>
+    </div>
+</body>
+</html>

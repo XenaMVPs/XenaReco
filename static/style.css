@@ -1,0 +1,36 @@
+body {
+    background-color: #111;
+    color: #fff;
+    font-family: "Courier New", monospace;
+    text-align: center;
+}
+
+h1 {
+    color: #c084fc; /* Morado pastel */
+}
+
+.container {
+    width: 80%;
+    margin: auto;
+    background-color: #222;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(192, 132, 252, 0.5);
+}
+
+input, button {
+    padding: 10px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+}
+
+button {
+    background-color: #c084fc;
+    color: #111;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #a855f7;
+}

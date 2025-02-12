@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>XenaReco - OSINT Tool</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>XenaReco - OSINT Tool</h1>
+    <div class="container">
+        <form action="/recon" method="POST">
+            <label>Introduce un dominio:</label>
+            <input type="text" name="domain" required>
+            <button type="submit">Analizar</button>
+        </form>
+    </div>
+</body>
+</html>
