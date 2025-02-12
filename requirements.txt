@@ -2,3 +2,4 @@ Flask==3.0.3
 requests==2.32.3
 whois==1.20240129.2
 bs4==0.0.2
+gunicorn==20.1.0
