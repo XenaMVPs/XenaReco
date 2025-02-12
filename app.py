@@ -3,7 +3,6 @@ import requests
 import whois
 import socket
 from bs4 import BeautifulSoup
-import json
 
 app = Flask(__name__)
 
@@ -11,14 +10,15 @@ app = Flask(__name__)
 def get_whois(domain):
     try:
         data = whois.whois(domain)
-        return json.dumps(data, indent=4, default=str)
+        return str(data)
     except:
         return "No se pudo obtener WHOIS."
 
 # Función para obtener IP de un dominio
 def get_ip(domain):
     try:
-        return socket.gethostbyname(domain)
+        ip = socket.gethostbyname(domain)
+        return ip
     except:
         return "No se pudo resolver la IP."
 
@@ -26,22 +26,36 @@ def get_ip(domain):
 def get_headers(domain):
     try:
         response = requests.get(f"http://{domain}", timeout=5)
-        return dict(response.headers)
+        headers = dict(response.headers)
+        return headers
     except:
         return "No se pudieron obtener los headers."
 
-# Función para hacer scraping básico (Title y Meta Description)
+# Función para hacer scraping más completo (Título, meta description, keywords, autor)
 def get_meta(domain):
     try:
         response = requests.get(f"http://{domain}", timeout=5)
-        response.encoding = response.apparent_encoding  # Corrige caracteres raros
+        response.encoding = response.apparent_encoding  # Corregir problemas de codificación
         soup = BeautifulSoup(response.text, "html.parser")
+
         title = soup.title.string if soup.title else "No Title"
         meta_desc = soup.find("meta", attrs={"name": "description"})
         meta_desc = meta_desc["content"] if meta_desc else "No Meta Description"
-        return {"title": title, "meta_desc": meta_desc}
-    except:
-        return {"title": "Error", "meta_desc": "No se pudo obtener la información"}
+
+        keywords = soup.find("meta", attrs={"name": "keywords"})
+        keywords = keywords["content"] if keywords else "No Keywords Found"
+
+        author = soup.find("meta", attrs={"name": "author"})
+        author = author["content"] if author else "No Author Found"
+
+        return {
+            "title": title,
+            "meta_desc": meta_desc,
+            "keywords": keywords,
+            "author": author
+        }
+    except Exception as e:
+        return {"title": "Error", "meta_desc": "No se pudo obtener la información", "keywords": "", "author": ""}
 
 # Ruta principal
 @app.route('/')

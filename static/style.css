@@ -1,36 +1,69 @@
 body {
-    background-color: #111;
-    color: #fff;
-    font-family: "Courier New", monospace;
+    background-color: #121212;
+    color: #E0E0E0;
+    font-family: 'Courier New', monospace;
     text-align: center;
+    padding: 20px;
 }
 
 h1 {
     color: #c084fc; /* Morado pastel */
+    margin-bottom: 20px;
 }
 
 .container {
     width: 80%;
     margin: auto;
-    background-color: #222;
+    background-color: #1e1e1e;
     padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0px 0px 10px rgba(192, 132, 252, 0.5);
+    border-radius: 15px;
+    box-shadow: 0px 0px 15px rgba(192, 132, 252, 0.6);
+    overflow: hidden;
 }
 
 input, button {
-    padding: 10px;
+    padding: 12px;
     font-size: 16px;
     border: none;
     border-radius: 5px;
+    margin-top: 10px;
 }
 
 button {
     background-color: #c084fc;
-    color: #111;
+    color: #121212;
     cursor: pointer;
+    transition: background-color 0.3s ease;
 }
 
 button:hover {
     background-color: #a855f7;
+}
+
+pre {
+    text-align: left;
+    background-color: #2c2c2c;
+    padding: 10px;
+    border-radius: 5px;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    max-height: 400px;
+    overflow-y: scroll;
+}
+
+a {
+    display: block;
+    margin-top: 20px;
+    color: #c084fc;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #a855f7;
+}
+
+@media (max-width: 768px) {
+    .container {
+        width: 95%;
+    }
 }
